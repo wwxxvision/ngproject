@@ -1,2 +1,5 @@
-
-  {{images.images | json}}
+<div class="slider">
+  <div  *ngFor="let image  of images.images">
+    <img class="slider__image" src={{image.url}}  alt="slider_image">
+  </div>
+</div>
