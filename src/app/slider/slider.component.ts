@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { log } from 'util';
+import { DataService } from '../data.service'
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Api } from './api';
@@ -10,9 +10,11 @@ import { Api } from './api';
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
-  constructor() {}
+  images: Api[];
+  constructor(private _dataService: DataService) {}
   ngOnInit() {
-
+    return this._dataService.getImages()
+      .subscribe(data => this.images = data);
   }
 
 }
