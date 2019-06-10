@@ -5,7 +5,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #2873ed;
 }
 .home-menu__title {
     font-family: 'Dosis', sans-serif;
@@ -14,19 +13,15 @@
 }
 .connection {
     height: 80%;
-    background-color: #2873ed;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 .connection-start {
-    width: 200px;
-    height: 80px;
-    background: none;
-    border: none;
     opacity: 1;
     color: white;
+    text-decoration: none;
     font-family: 'Noto Sans HK', sans-serif;
     font-size: 5vh;
     margin-top: 10px;

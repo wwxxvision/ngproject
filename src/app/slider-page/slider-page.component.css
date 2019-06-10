@@ -1,0 +1,22 @@
+.header-slider {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    height: 50px;
+    background-color: white;
+}
+.header-slider__title {
+    color: grey;
+    padding-right: 5px;
+}
+.header-slider__back {
+    text-decoration: none;
+    font-size: 3vh;
+    padding-left: 5px;
+    transition-duration: 2s;
+    color: black;
+}
+.header-slider__back:hover {
+    opacity: 0.4;
+    transition-duration: 2s;
+}
