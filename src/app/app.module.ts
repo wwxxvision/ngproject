@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SliderPageComponent } from './slider-page/slider-page.component';
 import { SliderComponent } from './slider/slider.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './data.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,9 +17,10 @@ import { SliderComponent } from './slider/slider.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
