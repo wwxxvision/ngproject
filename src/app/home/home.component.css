@@ -1,0 +1,54 @@
+.home-menu {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #2873ed;
+}
+.home-menu__title {
+    font-family: 'Dosis', sans-serif;
+    color: #fff;
+    font-size:  3vh;
+}
+.connection {
+    height: 80%;
+    background-color: #2873ed;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.connection-start {
+    width: 200px;
+    height: 80px;
+    background: none;
+    border: none;
+    opacity: 1;
+    color: white;
+    font-family: 'Noto Sans HK', sans-serif;
+    font-size: 5vh;
+    margin-top: 10px;
+    transition-duration: 1.4s;
+}
+.connection-start:hover {
+    cursor: pointer;
+    opacity: 0.4;
+    transform: scale(-0.1);
+    transition-duration: 1.4s;
+}
+.info-project {
+    background-color: white;
+    height: 30%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.info-project__describe {
+    text-align: center;
+    font-family: 'Noto Sans HK', sans-serif;
+    font-size: 3vh;   
+}
