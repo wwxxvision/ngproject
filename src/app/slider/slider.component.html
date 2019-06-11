@@ -1,10 +1,12 @@
 
 <div class="slider" #slider>
   <div class="wrapper js-wrp">
-    <img src="../assets/img/alex-knight-326705-unsplash.jpg" alt="slider_image" class="slider__image" id="firstSlide">
-    <img *ngFor="let image  of images.images" class="slider__image" src={{image.url}}  alt="slider_image">
-    <img src="../assets/img/lai-man-nung-783645-unsplash.jpg" alt="slider_image" class="slider__image">
-    <img src="../assets/img/pedro-lastra-157071-unsplash.jpg" alt="slider_image" class="slider__image" id="lastSlide">
+    <ng-template ngFor let-image [ngForOf]="images" let-i="index" >
+      <img src="../assets/img/alex-knight-326705-unsplash.jpg" alt="slider_image" class="slider__image" id="firstSlide">
+      <img  class="slider__image" src={{image.url}}  alt="slider_image">
+      <img src="../assets/img/lai-man-nung-783645-unsplash.jpg" alt="slider_image" class="slider__image">
+      <img src="../assets/img/pedro-lastra-157071-unsplash.jpg" alt="slider_image" class="slider__image" id="lastSlide">
+    </ng-template>
   </div>
 </div>
 <div class="btn">

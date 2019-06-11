@@ -10,10 +10,8 @@ import { Api } from './api';
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
-  images: Api[];
   constructor(private _dataService: DataService) {}
-  @ViewChild('slider', {static: false})
-  slider: ElementRef
+  images: any = [];
   imagesElements: any;
   firstElement: any;
   lastElement: any;
@@ -24,7 +22,10 @@ export class SliderComponent implements OnInit {
   counter: number = 1;
   ngOnInit() {
     return this._dataService.getImages()
-      .subscribe(data => this.images = data);
+      .subscribe((data) => {
+        this.images.push(data)
+        console.log(this.images[0].images)
+      })
   }
   ngAfterViewInit() {
     this.wrapper = document.querySelector('.js-wrp');

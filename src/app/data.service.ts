@@ -8,6 +8,6 @@ export class DataService {
   apiUrl = 'http://www.splashbase.co/api/v1/images/latest';
   constructor(private _http: HttpClient ) { }
   getImages() {
-    return this._http.get<Api[]>(this.apiUrl);
+    return this._http.get(this.apiUrl);
   }
 }
