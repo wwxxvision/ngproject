@@ -26,7 +26,7 @@ export class SliderComponent implements OnInit {
       .subscribe((data) => {
         this.images = data['images']
         this.images = this.images.slice(0,3);
-        console.log(this.images)
+        console.log('Get Response element', this.images)
       })
   }
   ngAfterViewInit() {
@@ -43,33 +43,29 @@ export class SliderComponent implements OnInit {
       event.preventDefault();
       this.wrapper.style.transition = 'transform 0.2s ease-in-out';
       this.counter++;
-      console.log(this.image)
+      console.log('check counter' ,this.counter);
       this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
     })
     left.addEventListener('click',(event) => {
       if (this.counter <= 0) return;
       this.wrapper.style.transition = 'transform 0.4s ease-in-out';
       this.counter--;
+      console.log('check counter' ,this.counter);
       this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
     })
     this.wrapper.addEventListener('transitionend', () => {
       if(this.image[this.counter].id === 'lastSlide'){
         this.wrapper.style.transition = 'none';
-        console.log(this);
+        console.log('current item', this.image[this.counter]);
         this.counter = this.image.length - this.counter;
         this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
       }
       if(this.image[this.counter].id === 'firstSlide'){
         this.wrapper.style.transition = 'none';
         this.counter = this.image.length - 2;
-        console.log(this);
+        console.log('current item', this.image[this.counter]);
         this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
       }
     })
-  }
-  leftClick() {
-    this.wrapper.style.transition = 'transform 0.4s ease-in-out';
-    this.counter--;
-    this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
   }
 }
