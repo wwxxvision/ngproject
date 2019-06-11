@@ -11,7 +11,7 @@ import { Api } from './api';
 })
 export class SliderComponent implements OnInit {
   constructor(private _dataService: DataService) {}
-  images: any = [];
+  images = [];
   imagesElements: any;
   firstElement: any;
   lastElement: any;
@@ -23,7 +23,7 @@ export class SliderComponent implements OnInit {
   ngOnInit() {
     return this._dataService.getImages()
       .subscribe((data) => {
-        this.images.push(data)
+        this.images = data['images']
         console.log(this.images[0].images)
       })
   }
@@ -33,29 +33,27 @@ export class SliderComponent implements OnInit {
     this.lastElement = this.wrapper.lastChild;
     this.size = this.firstElement.clientWidth;
     this.image = document.querySelectorAll('.slider__image');
-    this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
+    this.wrapper.style.transform = 'translateX('+(-this.size + this.counter)+ 'px)';
     console.log(this.image);
     this.wrapper.addEventListener('transitionend', () => {
-      if(this.image[this.counter].id === 'lastSlide'){
-        this.wrapper.style.transition = 'none';
-        this.counter = this.image.length - this.counter;
-        this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
-      }
-      else if(this.image[this.counter].id === 'firstSlide'){
+      if(this.image.children[this.counter] &&  this.image[this.counter].id === 'lastSlide'){
         this.wrapper.style.transition = 'none';
         this.counter = this.image.length - 2;
         this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
       }
+      /*else if(this.image[this.counter].id === 'firstSlide'){
+        this.wrapper.style.transition = 'none';
+        this.counter = this.image.length;
+        this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
+      }*/
     })
   }
   rightClick() {
-    if (this.counter >= this.image.length - 1) return;
     this.wrapper.style.transition = 'transform 0.4s ease-in-out';
     this.counter++;
     this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
   }
   leftClick() {
-    if (this.counter <= 0) return;
     this.wrapper.style.transition = 'transform 0.4s ease-in-out';
     this.counter--;
     this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
