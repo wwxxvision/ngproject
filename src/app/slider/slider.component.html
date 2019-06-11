@@ -1,8 +1,13 @@
-<div class="slider">
-  <div  *ngFor="let image  of images.images">
-    <img class="slider__image" src={{image.url}}  alt="slider_image">
+
+<div class="slider" #slider>
+  <div class="wrapper js-wrp">
+    <img src="../assets/img/alex-knight-326705-unsplash.jpg" alt="slider_image" class="slider__image" id="firstSlide">
+    <img *ngFor="let image  of images.images" class="slider__image" src={{image.url}}  alt="slider_image">
+    <img src="../assets/img/lai-man-nung-783645-unsplash.jpg" alt="slider_image" class="slider__image">
+    <img src="../assets/img/pedro-lastra-157071-unsplash.jpg" alt="slider_image" class="slider__image" id="lastSlide">
   </div>
-  <img src="../assets/img/alex-knight-326705-unsplash.jpg" alt="slider_image" class="slider__image">
-  <img src="../assets/img/lai-man-nung-783645-unsplash.jpg" alt="slider_image" class="slider__image">
-  <img src="../assets/img/pedro-lastra-157071-unsplash.jpg" alt="slider_image" class="slider__image">
+</div>
+<div class="btn">
+    <button class="slider-button" (click)="leftClick()">left</button>
+    <button type="button" (click)="rightClick()" class="slider-button" >rigth</button>
 </div>
