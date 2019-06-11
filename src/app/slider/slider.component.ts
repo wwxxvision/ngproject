@@ -1,9 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service'
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Api } from './api';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-slider',
@@ -26,7 +23,8 @@ export class SliderComponent implements OnInit {
       .subscribe((data) => {
         this.images = data['images']
         this.images = this.images.slice(0,3);
-        console.log('Get Response element', this.images)
+        console.log('Check slice element', this.images = this.images.slice(0,3))
+        console.log('Check how response wrote in variable', this.images)
       })
   }
   ngAfterViewInit() {
@@ -43,14 +41,14 @@ export class SliderComponent implements OnInit {
       event.preventDefault();
       this.wrapper.style.transition = 'transform 0.2s ease-in-out';
       this.counter++;
-      console.log('check counter' ,this.counter);
+      console.log('watch counter' ,this.counter);
       this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
     })
     left.addEventListener('click',(event) => {
       if (this.counter <= 0) return;
-      this.wrapper.style.transition = 'transform 0.4s ease-in-out';
+      this.wrapper.style.transition = 'transform 0.2s ease-in-out';
       this.counter--;
-      console.log('check counter' ,this.counter);
+      console.log('watch counter' ,this.counter);
       this.wrapper.style.transform = 'translateX('+(-this.size * this.counter)+ 'px)';
     })
     this.wrapper.addEventListener('transitionend', () => {
