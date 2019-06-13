@@ -14,12 +14,11 @@
     text-decoration: none;
     font-size: 3vh;
     padding-left: 5px;
-    transition-duration: 2s;
     color: black;
 }
 .header-slider__back:hover {
     opacity: 0.4;
-    transition-duration: 2s;
+    transition-duration: 0.5s;
 }
 .slider-content {
     display: flex;
