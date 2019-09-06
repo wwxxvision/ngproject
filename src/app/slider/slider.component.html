@@ -1,15 +1,15 @@
-
-<div class="slider" #slider>
-  <div class="wrapper js-wrp">
-    <img src="../assets/img/alex-knight-326705-unsplash.jpg" alt="slider_image" class="slider__image" id="firstSlide">
-    <ng-template ngFor let-image [ngForOf]="images" let-i="index" >
-      <img  class="slider__image" src={{image.url}}  alt="slider_image">
-    </ng-template>
-    <img src="../assets/img/lai-man-nung-783645-unsplash.jpg" alt="slider_image" class="slider__image">
-    <img src="../assets/img/pedro-lastra-157071-unsplash.jpg" alt="slider_image" class="slider__image" id="lastSlide">
-  </div>
+<div *ngIf="!load" class="loader">
+  <div class="loader__styles"></div>
+  <div class="loader__styles"></div>
 </div>
-<div class="btn">
-    <button class="slider-button" id="left">left</button>
-    <button type="button" id="right" class="slider-button" >rigth</button>
+<div *ngIf="load" class="slider">
+  <div class="wrapper">
+    <ng-template ngFor let-image [ngForOf]="anyImages" let-i="index">
+      <img class="slider__image" src={{image.url}} alt="slider_image">
+    </ng-template>
+    <!-- <img src="../assets/img/lai-man-nung-783645-unsplash.jpg" alt="slider_image" class="slider__image">
+      <img src="../assets/img/pedro-lastra-157071-unsplash.jpg" alt="slider_image" class="slider__image" id="lastSlide"> -->
+  </div>
+  <div (click)="changeSlide($event)" class="left_button"></div>
+  <div (click)="changeSlide($event)" class="right_button"></div>
 </div>
