@@ -9,5 +9,5 @@
     </ng-template>
   </div>
   <div (click)="changeSlide($event)" [ngClass]="(valueTransfrom === 0) ?  'left_button hidden' : 'left_button'"></div>
-  <div (click)="changeSlide($event)" [ngClass]="(valueTransfrom < (anyImages.length - 7) * (-150)) ?  'right_button hidden' : 'right_button'"></div>
+  <div (click)="changeSlide($event)" [ngClass]="(valueTransfrom < (anyImages.length - 2) * (-150)) ?  'right_button hidden' : 'right_button'"></div>
 </div>
