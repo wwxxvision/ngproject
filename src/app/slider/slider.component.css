@@ -44,11 +44,11 @@
 }
 .wrapper  {
     display: flex;
+    transition: 0.5s ease-in;
 }
 .left_button {
     position: absolute;
     height: 45px;
-    display: none;
     width: 45px;
     top: 70px;
     left: 5px;
@@ -63,6 +63,9 @@
     right: 10px;
     background-color: #fff;
     border-radius: 50%;
+}
+.hidden {
+    display: none;
 }
 .styles {
     color: #fff;

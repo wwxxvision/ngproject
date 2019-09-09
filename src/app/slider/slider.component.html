@@ -3,13 +3,11 @@
   <div class="loader__styles"></div>
 </div>
 <div *ngIf="load" class="slider">
-  <div class="wrapper">
+  <div (ngModel)="slider" [ngStyle]="{'transform': 'translateX(' + valueTransfrom + 'px)'}" class="wrapper">
     <ng-template ngFor let-image [ngForOf]="anyImages" let-i="index">
       <img class="slider__image" src={{image.url}} alt="slider_image">
     </ng-template>
-    <!-- <img src="../assets/img/lai-man-nung-783645-unsplash.jpg" alt="slider_image" class="slider__image">
-      <img src="../assets/img/pedro-lastra-157071-unsplash.jpg" alt="slider_image" class="slider__image" id="lastSlide"> -->
   </div>
-  <div (click)="changeSlide($event)" class="left_button"></div>
-  <div (click)="changeSlide($event)" class="right_button"></div>
+  <div (click)="changeSlide($event)" [ngClass]="(valueTransfrom === 0) ?  'left_button hidden' : 'left_button'"></div>
+  <div (click)="changeSlide($event)" [ngClass]="(valueTransfrom < (anyImages.length - 7) * (-150)) ?  'right_button hidden' : 'right_button'"></div>
 </div>

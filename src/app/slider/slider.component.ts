@@ -11,6 +11,7 @@ export class SliderComponent implements OnInit {
   constructor(private _dataService: DataService) { }
   anyImages: Array<any>;
   load: boolean;
+  slider: any;
   lastElement: any;
   valueTransfrom: any = 0;
   ngOnInit() {
@@ -30,53 +31,15 @@ export class SliderComponent implements OnInit {
       })
   }
   changeSlide(event: any): void {
-    const wrapper: HTMLElement = document.querySelector('.wrapper') as HTMLElement, rightBtn: HTMLElement = document.querySelector('.right_button') as HTMLElement,
-      leftBtn: HTMLElement = document.querySelector('.left_button') as HTMLElement;
-    console.log('get dom elements', wrapper, leftBtn, rightBtn);
-    this.valueTransfrom === -150 ? leftBtn.style.display = 'none' : leftBtn.style.display = 'block';
-    console.log('if go next, show leftBtn', this.valueTransfrom);
-    this.valueTransfrom < (this.anyImages.length - 5) * (-150) ? rightBtn.style.display = 'none' : rightBtn.style.display = 'block';
-    console.log('if finished in right slider , hidden rightBtn', this.valueTransfrom);
-    const update = (target?: any): any => {
-      const goBack = () => {
-        console.log('create async function');
-        return new Promise((resolve: any) => {
-          resolve(
-            wrapper.style.transform += `translateX(${-this.valueTransfrom}px)`,
-            console.log('get start position slider', wrapper.style.transform)
-          );
-        })
-      }
-      console.log('check if first position , then stop go left');
-      if (this.valueTransfrom === 150 && target.classList.contains('left_button')) {
-        goBack().then(() => this.valueTransfrom = 0);
-        console.log('if return true , then goBack() and counter will null', this.valueTransfrom);
-      }
+    const moveRight = () : void => {
+      console.log('move to left slider');
+      this.valueTransfrom -=  150;
     }
-    const moveRight: any = (): void => {
-      console.log('go right, function for right step');
-      leftBtn.style.display = 'block';
-      console.log('show left block', leftBtn.style.display);
-      wrapper.style.transform += `translateX(-150px)`;
-      console.log('moved slider', wrapper.style.transform);
-      wrapper.style.transition = '0.5s';
-      console.log('set speed transition', wrapper.style.transition);
-      this.valueTransfrom += -150;
-      console.log('change count value', this.valueTransfrom);
+    const moveLeft = () : void => {
+      console.log('move to right slider');
+      this.valueTransfrom +=  150;
     }
-    const moveLeft: any = (): void => {
-      rightBtn.style.display = 'block';
-      console.log('show right block', leftBtn.style.display)
-      wrapper.style.transform += `translateX(150px)`;
-      console.log('moved slider', wrapper.style.transform);
-      wrapper.style.transition = '0.5s';
-      console.log('set speed transition', wrapper.style.transition);
-      this.valueTransfrom += 150;
-      console.log('change count value', this.valueTransfrom);
-      update(event.target);
-      console.log('check if dont start position');
-    }
+    console.log('It is checking , which button press');
     event.target.classList.contains('left_button') ? moveLeft() : moveRight();
-    console.log('check left or right button');
   }
 }
